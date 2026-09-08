@@ -1,3 +1,4 @@
+import favicon from "@/assets/JS-Favicon.svg"
 import { navLinks, profile, socialLinks } from "@/data/portfolio"
 
 export function Footer() {
@@ -16,13 +17,24 @@ export function Footer() {
         className="mx-auto flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:justify-between md:text-left"
         style={{ maxWidth: "var(--max-content-width)" }}
       >
-        <div>
-          <p className="font-title-md" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
-            {profile.alias}
-          </p>
-          <p className="font-body-sm" style={{ color: "var(--color-text-muted)", margin: "6px 0 0" }}>
-            © {year} {profile.name}. All rights reserved.
-          </p>
+        <div className="flex items-center gap-3">
+          <img
+            src={favicon}
+            alt=""
+            width={40}
+            height={40}
+            className="shrink-0"
+            style={{ width: 40, height: 40, objectFit: "contain" }}
+            aria-hidden="true"
+          />
+          <div className="text-left">
+            <p className="font-title-md" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
+              {profile.alias}
+            </p>
+            <p className="font-body-sm" style={{ color: "var(--color-text-muted)", margin: "6px 0 0" }}>
+              © {year} {profile.name}. All rights reserved.
+            </p>
+          </div>
         </div>
 
         <nav aria-label="Accesos rápidos del pie">

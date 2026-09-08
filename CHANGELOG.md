@@ -2,6 +2,24 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.2.0] - 2026-09-08
+
+### Added
+
+- Se incorporó el modelo de contenido del portafolio (perfil, proyectos, skills, redes y actividad de GitHub).
+- Se añadieron las secciones Navbar, Hero, Projects, Skills, GitHub, Contact y Footer.
+- Se compuso la página principal del portafolio con enlace de accesibilidad para saltar al contenido.
+- Se agregaron utilidades tipográficas y estilos base alineados a los design tokens.
+
+### Changed
+
+- Se actualizó el HTML con idioma español, título y meta descripción del portafolio.
+- Se reemplazó el Header legado por la nueva Navbar basada en tokens.
+
+### Removed
+
+- Se eliminó el componente Header anterior.
+
 ## [0.1.0] - 2026-09-07
 
 ### Added

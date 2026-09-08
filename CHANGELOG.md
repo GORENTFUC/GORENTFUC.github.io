@@ -2,6 +2,14 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.4.0] - 2026-09-08
+
+### Added
+
+- Se añadieron metadatos Open Graph, Twitter Card y JSON-LD (Person) para el portafolio.
+- Se incorporó la imagen de vista previa social `og-image.png`.
+- Se agregaron canonical URL, author, theme-color y color-scheme en el HTML.
+
 ## [0.3.0] - 2026-09-08
 
 ### Added

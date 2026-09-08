@@ -9,11 +9,11 @@ export function Footer() {
         borderTop: "var(--border-structural)",
         backgroundColor: "var(--color-surface-container-lowest)",
         paddingBlock: "var(--space-xl)",
-        paddingInline: "var(--margin-mobile)",
+        paddingInline: "clamp(1.25rem, 4vw, 3rem)",
       }}
     >
       <div
-        className="mx-auto flex flex-col gap-6 md:flex-row md:items-start md:justify-between"
+        className="mx-auto flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:justify-between md:text-left"
         style={{ maxWidth: "var(--max-content-width)" }}
       >
         <div>
@@ -21,13 +21,13 @@ export function Footer() {
             {profile.alias}
           </p>
           <p className="font-body-sm" style={{ color: "var(--color-text-muted)", margin: "6px 0 0" }}>
-            © {year} {profile.name}. Todos los derechos reservados.
+            © {year} {profile.name}. All rights reserved.
           </p>
         </div>
 
         <nav aria-label="Accesos rápidos del pie">
           <ul
-            className="flex flex-wrap gap-x-4 gap-y-2"
+            className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
             style={{ listStyle: "none", margin: 0, padding: 0 }}
           >
             {navLinks.map((link) => (
@@ -52,7 +52,7 @@ export function Footer() {
 
         <nav aria-label="Redes sociales del pie">
           <ul
-            className="flex flex-wrap gap-x-4 gap-y-2"
+            className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
             style={{ listStyle: "none", margin: 0, padding: 0 }}
           >
             {socialLinks.map((link) => (

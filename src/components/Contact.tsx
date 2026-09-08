@@ -1,6 +1,6 @@
 import { useId, useState, type FormEvent } from "react"
 import { Send } from "lucide-react"
-import { socialLinks } from "@/data/portfolio"
+import { profile, socialLinks } from "@/data/portfolio"
 
 type FormState = {
   name: string
@@ -34,152 +34,60 @@ export function Contact() {
       aria-labelledby="contact-heading"
       style={{
         paddingBlock: "var(--space-3xl)",
-        paddingInline: "var(--margin-mobile)",
+        paddingInline: "clamp(1.25rem, 4vw, 3rem)",
       }}
     >
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
-        <header style={{ marginBottom: "var(--space-2xl)" }}>
+        <header className="text-center" style={{ marginBottom: "var(--space-2xl)" }}>
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
             Signal Channel
           </p>
           <h2
             id="contact-heading"
-            className="font-headline-lg"
-            style={{ color: "var(--color-warm-cream)", margin: "0.5rem 0 0" }}
+            className="font-headline-lg mx-auto"
+            style={{ color: "var(--color-warm-cream)", margin: "0.5rem auto 0", maxWidth: "20ch" }}
           >
-            Contacto
+            Let&apos;s construct something timeless.
           </h2>
-          <p className="font-body-md mt-3 max-w-2xl" style={{ color: "var(--color-text-secondary)" }}>
-            Cuéntame sobre colaboraciones, oportunidades o proyectos. Respondo con precisión y sin ruido.
+          <p
+            className="font-body-md mx-auto"
+            style={{
+              color: "var(--color-text-secondary)",
+              marginTop: "var(--space-sm)",
+              maxWidth: "36rem",
+            }}
+          >
+            Escribe sobre colaboraciones, oportunidades o proyectos. {profile.alias} responde con
+            precisión y sin ruido.
           </p>
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            style={{
-              backgroundColor: "var(--color-surface-substrate)",
-              border: "var(--border-structural)",
-              borderRadius: "var(--radius-default)",
-              boxShadow: "var(--shadow-tactile-inset)",
-              padding: "var(--space-lg)",
-              display: "grid",
-              gap: "var(--space-md)",
-            }}
-            aria-describedby={submitted ? `${formId}-success` : undefined}
-          >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field
-                id={`${formId}-name`}
-                label="Nombre"
-                value={form.name}
-                onChange={(value) => setForm((prev) => ({ ...prev, name: value }))}
-                autoComplete="name"
-                required
-              />
-              <Field
-                id={`${formId}-email`}
-                label="Email"
-                type="email"
-                value={form.email}
-                onChange={(value) => setForm((prev) => ({ ...prev, email: value }))}
-                autoComplete="email"
-                required
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor={`${formId}-message`}
-                className="font-label-md mb-2 block"
-                style={{ color: "var(--color-text-secondary)" }}
-              >
-                Mensaje
-              </label>
-              <textarea
-                id={`${formId}-message`}
-                name="message"
-                required
-                rows={6}
-                value={form.message}
-                onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
-                placeholder="Describe el contexto, alcance y timeline..."
-                className="w-full resize-y"
-                style={{
-                  backgroundColor: "var(--color-surface-container-low)",
-                  color: "var(--color-text-primary)",
-                  border: "var(--border-structural)",
-                  borderRadius: "var(--radius-default)",
-                  padding: "0.75rem",
-                  outline: "none",
-                }}
-                onFocus={(event) => {
-                  event.currentTarget.style.border = "var(--border-focus)"
-                }}
-                onBlur={(event) => {
-                  event.currentTarget.style.border = "var(--border-structural)"
-                }}
-              />
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 font-label-md"
-                style={{
-                  backgroundColor: "var(--color-architectural-ochre)",
-                  color: "var(--color-on-primary)",
-                  border: "none",
-                  borderRadius: "var(--radius-default)",
-                  padding: "0.625rem 1rem",
-                  boxShadow: "var(--shadow-button-bevel)",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(event) => {
-                  event.currentTarget.style.backgroundColor = "var(--color-architectural-ochre-hover)"
-                }}
-                onMouseLeave={(event) => {
-                  event.currentTarget.style.backgroundColor = "var(--color-architectural-ochre)"
-                }}
-                onMouseDown={(event) => {
-                  event.currentTarget.style.transform = "translateY(1px)"
-                }}
-                onMouseUp={(event) => {
-                  event.currentTarget.style.transform = "translateY(0)"
-                }}
-              >
-                <Send size={15} aria-hidden="true" />
-                Enviar mensaje
-              </button>
-
-              {submitted ? (
-                <p
-                  id={`${formId}-success`}
-                  className="font-body-sm"
-                  style={{ color: "var(--color-muted-earth-olive)", margin: 0 }}
-                  role="status"
-                >
-                  Abriendo tu cliente de correo…
-                </p>
-              ) : null}
-            </div>
-          </form>
-
+        <div className="mx-auto grid max-w-4xl gap-6 lg:grid-cols-[0.85fr_1.15fr]">
           <aside
             aria-label="Redes sociales"
             style={{
               backgroundColor: "var(--color-elevated-plate)",
               border: "var(--border-structural)",
-              borderRadius: "var(--radius-default)",
+              borderRadius: "var(--radius-xl)",
               padding: "var(--space-lg)",
               height: "fit-content",
             }}
           >
             <h3 className="font-title-md" style={{ color: "var(--color-warm-cream)", marginTop: 0 }}>
-              Canales directos
+              Direct channels
             </h3>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "var(--space-sm)" }}>
+            <p className="font-body-sm" style={{ color: "var(--color-text-secondary)" }}>
+              También puedes contactarme por estos canales.
+            </p>
+            <ul
+              style={{
+                listStyle: "none",
+                margin: "var(--space-md) 0 0",
+                padding: 0,
+                display: "grid",
+                gap: "var(--space-sm)",
+              }}
+            >
               {socialLinks.map((link) => (
                 <li key={link.id}>
                   <a
@@ -202,6 +110,117 @@ export function Contact() {
               ))}
             </ul>
           </aside>
+
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            style={{
+              backgroundColor: "var(--color-surface-substrate)",
+              border: "var(--border-structural)",
+              borderRadius: "var(--radius-xl)",
+              boxShadow: "var(--shadow-tactile-inset)",
+              padding: "var(--space-lg)",
+              display: "grid",
+              gap: "var(--space-md)",
+            }}
+            aria-describedby={submitted ? `${formId}-success` : undefined}
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field
+                id={`${formId}-name`}
+                label="Name"
+                value={form.name}
+                onChange={(value) => setForm((prev) => ({ ...prev, name: value }))}
+                autoComplete="name"
+                required
+              />
+              <Field
+                id={`${formId}-email`}
+                label="Email"
+                type="email"
+                value={form.email}
+                onChange={(value) => setForm((prev) => ({ ...prev, email: value }))}
+                autoComplete="email"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor={`${formId}-message`}
+                className="font-label-md mb-2 block"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
+                Message
+              </label>
+              <textarea
+                id={`${formId}-message`}
+                name="message"
+                required
+                rows={6}
+                value={form.message}
+                onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
+                placeholder="Describe el contexto, alcance y timeline..."
+                className="w-full resize-y"
+                style={{
+                  backgroundColor: "var(--color-surface-container-low)",
+                  color: "var(--color-text-primary)",
+                  border: "var(--border-structural)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "0.75rem",
+                  outline: "none",
+                }}
+                onFocus={(event) => {
+                  event.currentTarget.style.border = "var(--border-focus)"
+                }}
+                onBlur={(event) => {
+                  event.currentTarget.style.border = "var(--border-structural)"
+                }}
+              />
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="submit"
+                className="inline-flex w-full items-center justify-center gap-2 font-label-md sm:w-auto"
+                style={{
+                  backgroundColor: "var(--color-architectural-ochre)",
+                  color: "var(--color-on-primary)",
+                  border: "none",
+                  borderRadius: "var(--radius-md)",
+                  padding: "0.75rem 1.25rem",
+                  boxShadow: "var(--shadow-button-bevel)",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.backgroundColor = "var(--color-architectural-ochre-hover)"
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.backgroundColor = "var(--color-architectural-ochre)"
+                }}
+                onMouseDown={(event) => {
+                  event.currentTarget.style.transform = "translateY(1px)"
+                }}
+                onMouseUp={(event) => {
+                  event.currentTarget.style.transform = "translateY(0)"
+                }}
+              >
+                <Send size={15} aria-hidden="true" />
+                Send Transmission
+              </button>
+
+              {submitted ? (
+                <p
+                  id={`${formId}-success`}
+                  className="font-body-sm"
+                  style={{ color: "var(--color-muted-earth-olive)", margin: 0 }}
+                  role="status"
+                >
+                  Abriendo tu cliente de correo…
+                </p>
+              ) : null}
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -249,7 +268,7 @@ function Field({
           backgroundColor: "var(--color-surface-container-low)",
           color: "var(--color-text-primary)",
           border: "var(--border-structural)",
-          borderRadius: "var(--radius-default)",
+          borderRadius: "var(--radius-lg)",
           padding: "0.625rem 0.75rem",
           outline: "none",
         }}

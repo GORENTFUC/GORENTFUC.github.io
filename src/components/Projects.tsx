@@ -10,8 +10,8 @@ function TechChip({ label, featured = false }: { label: string; featured?: boole
     <span
       className={`font-label-sm inline-flex ${featured ? "chip-featured" : "chip-neutral"}`}
       style={{
-        borderRadius: "var(--radius-default)",
-        padding: "2px 8px",
+        borderRadius: "var(--radius-full)",
+        padding: "4px 10px",
       }}
     >
       {label}
@@ -28,7 +28,7 @@ function ProjectCard({ project }: { project: Project }) {
       style={{
         backgroundColor: "var(--color-elevated-plate)",
         border: "var(--border-structural)",
-        borderRadius: "var(--radius-default)",
+        borderRadius: "var(--radius-xl)",
         boxShadow: "var(--shadow-tactile-inset)",
         overflow: "hidden",
       }}
@@ -44,7 +44,15 @@ function ProjectCard({ project }: { project: Project }) {
         aria-hidden="true"
       />
 
-      <div style={{ padding: "var(--space-lg)", display: "flex", flexDirection: "column", gap: "var(--space-md)", flex: 1 }}>
+      <div
+        style={{
+          padding: "var(--space-lg)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--space-md)",
+          flex: 1,
+        }}
+      >
         <div className="flex items-start justify-between gap-3">
           <h3 className="font-title-lg" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
             {project.title}
@@ -52,7 +60,7 @@ function ProjectCard({ project }: { project: Project }) {
           {isActive ? (
             <span
               className="chip-status font-label-sm inline-flex items-center gap-1.5 shrink-0"
-              style={{ borderRadius: "var(--radius-default)", padding: "2px 8px" }}
+              style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}
             >
               <span
                 className="inline-block h-1.5 w-1.5 animate-pulse"
@@ -75,7 +83,7 @@ function ProjectCard({ project }: { project: Project }) {
           <div aria-label={`Progreso ${project.progress}%`}>
             <div className="mb-2 flex items-center justify-between">
               <span className="font-label-sm" style={{ color: "var(--color-text-muted)" }}>
-                Progress
+                Development
               </span>
               <span className="font-label-sm" style={{ color: "var(--color-muted-earth-olive)" }}>
                 {project.progress}%
@@ -83,9 +91,9 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
             <div
               style={{
-                height: "4px",
+                height: "6px",
                 backgroundColor: "var(--color-structural-slate)",
-                borderRadius: "var(--radius-sm)",
+                borderRadius: "var(--radius-full)",
                 overflow: "hidden",
               }}
             >
@@ -93,7 +101,8 @@ function ProjectCard({ project }: { project: Project }) {
                 style={{
                   width: `${project.progress}%`,
                   height: "100%",
-                  backgroundColor: "var(--color-muted-earth-olive)",
+                  backgroundColor: "var(--color-architectural-ochre)",
+                  borderRadius: "var(--radius-full)",
                 }}
               />
             </div>
@@ -157,7 +166,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}
@@ -172,11 +181,11 @@ export function Projects() {
       aria-labelledby="projects-heading"
       style={{
         paddingBlock: "var(--space-3xl)",
-        paddingInline: "var(--margin-mobile)",
+        paddingInline: "clamp(1.25rem, 4vw, 3rem)",
       }}
     >
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
-        <header style={{ marginBottom: "var(--space-2xl)" }}>
+        <header className="mb-10 text-center" style={{ marginBottom: "var(--space-2xl)" }}>
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
             Selected Work
           </p>
@@ -185,21 +194,21 @@ export function Projects() {
             className="font-headline-lg"
             style={{ color: "var(--color-warm-cream)", margin: "0.5rem 0 0" }}
           >
-            Proyectos
+            Projects & Architecture
           </h2>
         </header>
 
         <div style={{ display: "grid", gap: "var(--space-2xl)" }}>
           <div>
-            <div className="mb-4 flex items-center gap-2">
+            <div className="mb-4 flex items-center justify-center gap-2">
               <h3 className="font-title-lg" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
-                Proyectos Actuales
+                Current Builds
               </h3>
               <span
                 className="chip-status font-label-sm"
-                style={{ borderRadius: "var(--radius-default)", padding: "2px 8px" }}
+                style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}
               >
-                Active build
+                Active
               </span>
             </div>
             <ProjectGrid projects={currentProjects} />
@@ -211,8 +220,11 @@ export function Projects() {
               paddingTop: "var(--space-2xl)",
             }}
           >
-            <h3 className="font-title-lg mb-4" style={{ color: "var(--color-warm-cream)", marginTop: 0 }}>
-              Proyectos Destacados
+            <h3
+              className="font-title-lg mb-4 text-center"
+              style={{ color: "var(--color-warm-cream)", marginTop: 0 }}
+            >
+              Featured Work
             </h3>
             <ProjectGrid projects={featuredProjects} />
           </div>

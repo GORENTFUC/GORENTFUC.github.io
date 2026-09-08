@@ -18,7 +18,7 @@ export default function App() {
         style={{
           backgroundColor: "var(--color-architectural-ochre)",
           color: "var(--color-on-primary)",
-          borderRadius: "var(--radius-default)",
+          borderRadius: "var(--radius-md)",
         }}
       >
         Saltar al contenido
@@ -26,7 +26,7 @@ export default function App() {
 
       <Navbar />
 
-      <div className="shell-frame mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
+      <div className="mx-auto w-full" style={{ maxWidth: "var(--max-content-width)" }}>
         <main>
           <Hero />
           <Projects />

@@ -5,8 +5,11 @@ import { SkillsInventory } from "@/components/SkillsInventory"
 import { GithubPanel } from "@/components/GithubPanel"
 import { Contact } from "@/components/Contact"
 import { Footer } from "@/components/Footer"
+import { useLocale } from "@/i18n"
 
 export default function App() {
+  const { t } = useLocale()
+
   return (
     <div
       className="min-h-svh"
@@ -21,7 +24,7 @@ export default function App() {
           borderRadius: "var(--radius-md)",
         }}
       >
-        Saltar al contenido
+        {t.skipToContent}
       </a>
 
       <Navbar />

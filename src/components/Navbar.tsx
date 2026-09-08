@@ -1,8 +1,11 @@
 import { useEffect, useId, useState } from "react"
 import { Menu, X } from "lucide-react"
-import { navLinks, profile } from "@/data/portfolio"
+import { profile } from "@/data/portfolio"
+import { useLocale } from "@/i18n"
+import { LanguageToggle } from "@/components/LanguageToggle"
 
 export function Navbar() {
+  const { t } = useLocale()
   const [isOpen, setIsOpen] = useState(false)
   const menuId = useId()
 
@@ -33,7 +36,7 @@ export function Navbar() {
           href="#sobre-mi"
           className="font-title-md shrink-0 transition-colors"
           style={{ color: "var(--color-warm-cream)" }}
-          aria-label={`${profile.name} — ir al inicio`}
+          aria-label={`${profile.name} — ${t.nav.homeAria}`}
         >
           <span className="hidden sm:inline">{profile.name}</span>
           <span className="sm:hidden">{profile.shortName}</span>
@@ -41,9 +44,9 @@ export function Navbar() {
 
         <nav
           className="hidden flex-1 items-center justify-center gap-6 lg:flex"
-          aria-label="Navegación principal"
+          aria-label={t.nav.main}
         >
-          {navLinks.map((link) => (
+          {t.nav.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -62,8 +65,10 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageToggle />
+
           <span
-            className="chip-status hidden items-center gap-2 sm:inline-flex"
+            className="chip-status hidden items-center gap-2 md:inline-flex"
             style={{
               borderRadius: "var(--radius-full)",
               padding: "6px 12px",
@@ -78,7 +83,7 @@ export function Navbar() {
               }}
               aria-hidden="true"
             />
-            <span className="font-label-sm">{profile.statusBadge}</span>
+            <span className="font-label-sm">{t.profile.statusBadge}</span>
           </span>
 
           <button
@@ -95,7 +100,7 @@ export function Navbar() {
             }}
             aria-expanded={isOpen}
             aria-controls={menuId}
-            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={isOpen ? t.nav.closeMenu : t.nav.openMenu}
             onClick={() => setIsOpen((open) => !open)}
           >
             {isOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
@@ -114,8 +119,8 @@ export function Navbar() {
             paddingBlock: "var(--space-md)",
           }}
         >
-          <nav className="flex flex-col items-center gap-3" aria-label="Navegación móvil">
-            {navLinks.map((link) => (
+          <nav className="flex flex-col items-center gap-3" aria-label={t.nav.mobile}>
+            {t.nav.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -126,6 +131,25 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <span
+              className="chip-status inline-flex items-center gap-2 md:hidden"
+              style={{
+                borderRadius: "var(--radius-full)",
+                padding: "6px 12px",
+                marginTop: "var(--space-sm)",
+              }}
+              role="status"
+            >
+              <span
+                className="inline-block h-1.5 w-1.5 animate-pulse"
+                style={{
+                  borderRadius: "var(--radius-full)",
+                  backgroundColor: "var(--color-muted-earth-olive)",
+                }}
+                aria-hidden="true"
+              />
+              <span className="font-label-sm">{t.profile.statusBadge}</span>
+            </span>
           </nav>
         </div>
       ) : null}

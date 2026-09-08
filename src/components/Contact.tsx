@@ -1,6 +1,7 @@
 import { useId, useState, type FormEvent } from "react"
 import { Send } from "lucide-react"
-import { profile, socialLinks } from "@/data/portfolio"
+import { socialLinks } from "@/data/portfolio"
+import { useLocale } from "@/i18n"
 
 type FormState = {
   name: string
@@ -15,13 +16,14 @@ const initialState: FormState = {
 }
 
 export function Contact() {
+  const { t } = useLocale()
   const formId = useId()
   const [form, setForm] = useState<FormState>(initialState)
   const [submitted, setSubmitted] = useState(false)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const subject = encodeURIComponent(`Contacto portfolio — ${form.name}`)
+    const subject = encodeURIComponent(t.contact.mailSubject(form.name))
     const body = encodeURIComponent(`${form.message}\n\n— ${form.name} <${form.email}>`)
     window.location.href = `mailto:juan.lizcano.dev@gmail.com?subject=${subject}&body=${body}`
     setSubmitted(true)
@@ -40,14 +42,14 @@ export function Contact() {
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
         <header className="text-center" style={{ marginBottom: "var(--space-2xl)" }}>
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
-            Signal Channel
+            {t.contact.eyebrow}
           </p>
           <h2
             id="contact-heading"
             className="font-headline-lg mx-auto"
             style={{ color: "var(--color-warm-cream)", margin: "0.5rem auto 0", maxWidth: "20ch" }}
           >
-            Let&apos;s construct something timeless.
+            {t.contact.title}
           </h2>
           <p
             className="font-body-md mx-auto"
@@ -57,14 +59,13 @@ export function Contact() {
               maxWidth: "36rem",
             }}
           >
-            Escribe sobre colaboraciones, oportunidades o proyectos. {profile.alias} responde con
-            precisión y sin ruido.
+            {t.contact.subtitle}
           </p>
         </header>
 
         <div className="mx-auto grid max-w-4xl gap-6 lg:grid-cols-[0.85fr_1.15fr]">
           <aside
-            aria-label="Redes sociales"
+            aria-label={t.contact.channelsAria}
             style={{
               backgroundColor: "var(--color-elevated-plate)",
               border: "var(--border-structural)",
@@ -74,10 +75,10 @@ export function Contact() {
             }}
           >
             <h3 className="font-title-md" style={{ color: "var(--color-warm-cream)", marginTop: 0 }}>
-              Direct channels
+              {t.contact.channelsTitle}
             </h3>
             <p className="font-body-sm" style={{ color: "var(--color-text-secondary)" }}>
-              También puedes contactarme por estos canales.
+              {t.contact.channelsBody}
             </p>
             <ul
               style={{
@@ -102,7 +103,7 @@ export function Contact() {
                     onMouseLeave={(event) => {
                       event.currentTarget.style.color = "var(--color-text-secondary)"
                     }}
-                    aria-label={`Abrir ${link.label}`}
+                    aria-label={t.contact.openLinkAria(link.label)}
                   >
                     {link.label}
                   </a>
@@ -128,7 +129,7 @@ export function Contact() {
             <div className="grid gap-4 sm:grid-cols-2">
               <Field
                 id={`${formId}-name`}
-                label="Name"
+                label={t.contact.name}
                 value={form.name}
                 onChange={(value) => setForm((prev) => ({ ...prev, name: value }))}
                 autoComplete="name"
@@ -136,7 +137,7 @@ export function Contact() {
               />
               <Field
                 id={`${formId}-email`}
-                label="Email"
+                label={t.contact.email}
                 type="email"
                 value={form.email}
                 onChange={(value) => setForm((prev) => ({ ...prev, email: value }))}
@@ -151,7 +152,7 @@ export function Contact() {
                 className="font-label-md mb-2 block"
                 style={{ color: "var(--color-text-secondary)" }}
               >
-                Message
+                {t.contact.message}
               </label>
               <textarea
                 id={`${formId}-message`}
@@ -160,7 +161,7 @@ export function Contact() {
                 rows={6}
                 value={form.message}
                 onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
-                placeholder="Describe el contexto, alcance y timeline..."
+                placeholder={t.contact.placeholder}
                 className="w-full resize-y"
                 style={{
                   backgroundColor: "var(--color-surface-container-low)",
@@ -206,7 +207,7 @@ export function Contact() {
                 }}
               >
                 <Send size={15} aria-hidden="true" />
-                Send Transmission
+                {t.contact.submit}
               </button>
 
               {submitted ? (
@@ -216,7 +217,7 @@ export function Contact() {
                   style={{ color: "var(--color-muted-earth-olive)", margin: 0 }}
                   role="status"
                 >
-                  Abriendo tu cliente de correo…
+                  {t.contact.success}
                 </p>
               ) : null}
             </div>

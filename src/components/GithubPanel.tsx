@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 import { githubActivity } from "@/data/portfolio"
+import { useLocale } from "@/i18n"
 
 const heatVars = [
   "var(--heat-0)",
@@ -10,6 +11,8 @@ const heatVars = [
 ] as const
 
 export function GithubPanel() {
+  const { t } = useLocale()
+
   return (
     <section
       id="github"
@@ -22,14 +25,14 @@ export function GithubPanel() {
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
         <header className="mb-8 text-center" style={{ marginBottom: "var(--space-xl)" }}>
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
-            Telemetry
+            {t.github.eyebrow}
           </p>
           <h2
             id="github-heading"
             className="font-headline-lg"
             style={{ color: "var(--color-warm-cream)", margin: "0.5rem 0 0" }}
           >
-            GitHub Activity
+            {t.github.title}
           </h2>
           <p
             className="font-body-md mx-auto"
@@ -39,7 +42,7 @@ export function GithubPanel() {
               maxWidth: "36rem",
             }}
           >
-            {githubActivity.summary}
+            {t.github.summary}
           </p>
         </header>
 
@@ -65,7 +68,7 @@ export function GithubPanel() {
                 contribution://{githubActivity.username}
               </p>
               <p className="font-title-md" style={{ color: "var(--color-warm-cream)", margin: "4px 0 0" }}>
-                Activity Heatmap
+                {t.github.heatmapTitle}
               </p>
             </div>
             <a
@@ -74,9 +77,9 @@ export function GithubPanel() {
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 font-label-md"
               style={{ color: "var(--color-architectural-ochre)" }}
-              aria-label="Abrir perfil de GitHub"
+              aria-label={t.github.viewProfileAria}
             >
-              Ver perfil
+              {t.github.viewProfile}
               <ArrowUpRight size={14} aria-hidden="true" />
             </a>
           </div>
@@ -85,7 +88,7 @@ export function GithubPanel() {
             <div
               className="overflow-x-auto"
               role="img"
-              aria-label="Mapa de contribuciones de GitHub del último año en tonos ocre"
+              aria-label={t.github.heatmapAria}
             >
               <div
                 className="inline-grid min-w-max gap-[3px]"
@@ -99,7 +102,7 @@ export function GithubPanel() {
                   week.map((level, dayIndex) => (
                     <span
                       key={`${weekIndex}-${dayIndex}`}
-                      title={`Nivel ${level}`}
+                      title={t.github.levelTitle(level)}
                       style={{
                         width: "11px",
                         height: "11px",
@@ -118,7 +121,7 @@ export function GithubPanel() {
               style={{ marginTop: "var(--space-md)" }}
             >
               <p className="font-label-sm" style={{ color: "var(--color-text-muted)", margin: 0 }}>
-                Menos
+                {t.github.less}
               </p>
               <div className="flex items-center gap-1" aria-hidden="true">
                 {heatVars.map((color, index) => (
@@ -131,12 +134,12 @@ export function GithubPanel() {
                       backgroundColor: color,
                       border: "1px solid rgba(250, 237, 205, 0.04)",
                     }}
-                    title={`Nivel ${index}`}
+                    title={t.github.levelTitle(index)}
                   />
                 ))}
               </div>
               <p className="font-label-sm" style={{ color: "var(--color-text-muted)", margin: 0 }}>
-                Más
+                {t.github.more}
               </p>
             </div>
 
@@ -148,7 +151,7 @@ export function GithubPanel() {
                 paddingTop: "var(--space-lg)",
               }}
             >
-              {githubActivity.stats.map((stat) => (
+              {t.github.stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="text-center sm:text-left"
@@ -178,7 +181,7 @@ export function GithubPanel() {
                 marginBottom: "var(--space-md)",
               }}
             >
-              Repositorios destacados
+              {t.github.featuredRepos}
             </h3>
 
             <ul
@@ -211,14 +214,14 @@ export function GithubPanel() {
                       event.currentTarget.style.borderColor = "var(--color-structural-slate)"
                       event.currentTarget.style.backgroundColor = "var(--color-surface-substrate)"
                     }}
-                    aria-label={`Abrir repositorio ${repo.name}`}
+                    aria-label={t.github.openRepoAria(repo.name)}
                   >
                     <span>
                       <span className="font-title-md block" style={{ color: "var(--color-warm-cream)" }}>
                         {repo.name}
                       </span>
                       <span className="font-body-sm" style={{ color: "var(--color-text-secondary)" }}>
-                        {repo.description}
+                        {t.github.reposByName[repo.name]?.description}
                       </span>
                     </span>
                     <span

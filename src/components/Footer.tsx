@@ -1,7 +1,9 @@
 import favicon from "@/assets/JS-Favicon.svg"
-import { navLinks, profile, socialLinks } from "@/data/portfolio"
+import { profile, socialLinks } from "@/data/portfolio"
+import { useLocale } from "@/i18n"
 
 export function Footer() {
+  const { t } = useLocale()
   const year = new Date().getFullYear()
 
   return (
@@ -32,17 +34,17 @@ export function Footer() {
               {profile.alias}
             </p>
             <p className="font-body-sm" style={{ color: "var(--color-text-muted)", margin: "6px 0 0" }}>
-              © {year} {profile.name}. All rights reserved.
+              {t.footer.rights(year, profile.name)}
             </p>
           </div>
         </div>
 
-        <nav aria-label="Accesos rápidos del pie">
+        <nav aria-label={t.footer.quickLinksAria}>
           <ul
             className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
             style={{ listStyle: "none", margin: 0, padding: 0 }}
           >
-            {navLinks.map((link) => (
+            {t.nav.links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
@@ -62,7 +64,7 @@ export function Footer() {
           </ul>
         </nav>
 
-        <nav aria-label="Redes sociales del pie">
+        <nav aria-label={t.footer.socialAria}>
           <ul
             className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
             style={{ listStyle: "none", margin: 0, padding: 0 }}

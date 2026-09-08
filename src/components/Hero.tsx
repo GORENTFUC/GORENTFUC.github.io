@@ -1,7 +1,10 @@
 import { ArrowRight, Mail } from "lucide-react"
 import { profile } from "@/data/portfolio"
+import { useLocale } from "@/i18n"
 
 export function Hero() {
+  const { t } = useLocale()
+
   return (
     <section
       id="sobre-mi"
@@ -14,18 +17,15 @@ export function Hero() {
       <div className="mx-auto text-center" style={{ maxWidth: "var(--max-content-width)" }}>
         <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
-            System Specification & Overview
+            {t.profile.heroEyebrow}
           </p>
           <span
             className="chip-status inline-flex items-center gap-2"
             style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}
             role="status"
-            aria-label={profile.statusBadge}
+            aria-label={t.profile.statusBadge}
           >
-            <span
-              className="relative flex h-2 w-2"
-              aria-hidden="true"
-            >
+            <span className="relative flex h-2 w-2" aria-hidden="true">
               <span
                 className="absolute inline-flex h-full w-full animate-ping opacity-60"
                 style={{
@@ -41,7 +41,7 @@ export function Hero() {
                 }}
               />
             </span>
-            <span className="font-label-sm">{profile.statusBadge}</span>
+            <span className="font-label-sm">{t.profile.statusBadge}</span>
           </span>
         </div>
 
@@ -83,7 +83,7 @@ export function Hero() {
             maxWidth: "40rem",
           }}
         >
-          {profile.summary}
+          {t.profile.summary}
         </p>
 
         <div
@@ -113,7 +113,7 @@ export function Hero() {
               event.currentTarget.style.transform = "translateY(0)"
             }}
           >
-            Explore Projects
+            {t.profile.ctaProjects}
             <ArrowRight size={16} aria-hidden="true" />
           </a>
 
@@ -138,7 +138,7 @@ export function Hero() {
             }}
           >
             <Mail size={16} aria-hidden="true" />
-            Get in Touch
+            {t.profile.ctaContact}
           </a>
         </div>
 
@@ -151,7 +151,7 @@ export function Hero() {
             paddingTop: "var(--space-lg)",
           }}
         >
-          {profile.heroStats.map((stat) => (
+          {t.profile.heroStats.map((stat) => (
             <div key={stat.label} className="text-center sm:text-left">
               <dt className="font-label-sm" style={{ color: "var(--color-text-muted)", margin: 0 }}>
                 {stat.label}

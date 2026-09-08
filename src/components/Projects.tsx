@@ -4,6 +4,7 @@ import {
   featuredProjects,
   type Project,
 } from "@/data/portfolio"
+import { useLocale } from "@/i18n"
 
 function TechChip({ label, featured = false }: { label: string; featured?: boolean }) {
   return (
@@ -20,7 +21,9 @@ function TechChip({ label, featured = false }: { label: string; featured?: boole
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const { t } = useLocale()
   const isActive = project.status === "active"
+  const copy = t.projects.byId[project.id]
 
   return (
     <article
@@ -70,20 +73,20 @@ function ProjectCard({ project }: { project: Project }) {
                 }}
                 aria-hidden="true"
               />
-              En curso
+              {t.projects.inProgress}
             </span>
           ) : null}
         </div>
 
         <p className="font-body-md" style={{ color: "var(--color-text-secondary)", margin: 0 }}>
-          {project.description}
+          {copy?.description}
         </p>
 
         {typeof project.progress === "number" ? (
-          <div aria-label={`Progreso ${project.progress}%`}>
+          <div aria-label={t.projects.progressAria(project.progress)}>
             <div className="mb-2 flex items-center justify-between">
               <span className="font-label-sm" style={{ color: "var(--color-text-muted)" }}>
-                Development
+                {t.projects.development}
               </span>
               <span className="font-label-sm" style={{ color: "var(--color-muted-earth-olive)" }}>
                 {project.progress}%
@@ -134,7 +137,7 @@ function ProjectCard({ project }: { project: Project }) {
             onMouseLeave={(event) => {
               event.currentTarget.style.color = "var(--color-text-secondary)"
             }}
-            aria-label={`Ver ${project.title} en GitHub`}
+            aria-label={t.projects.githubAria(project.title)}
           >
             <FolderGit2 size={15} aria-hidden="true" />
             GitHub
@@ -152,10 +155,10 @@ function ProjectCard({ project }: { project: Project }) {
               onMouseLeave={(event) => {
                 event.currentTarget.style.color = "var(--color-text-secondary)"
               }}
-              aria-label={`Abrir demo en vivo de ${project.title}`}
+              aria-label={t.projects.liveAria(project.title)}
             >
               <ArrowUpRight size={15} aria-hidden="true" />
-              Live Demo
+              {t.projects.liveDemo}
             </a>
           ) : null}
         </div>
@@ -175,6 +178,8 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
 }
 
 export function Projects() {
+  const { t } = useLocale()
+
   return (
     <section
       id="proyectos"
@@ -187,14 +192,14 @@ export function Projects() {
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
         <header className="mb-10 text-center" style={{ marginBottom: "var(--space-2xl)" }}>
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
-            Selected Work
+            {t.projects.eyebrow}
           </p>
           <h2
             id="projects-heading"
             className="font-headline-lg"
             style={{ color: "var(--color-warm-cream)", margin: "0.5rem 0 0" }}
           >
-            Projects & Architecture
+            {t.projects.title}
           </h2>
         </header>
 
@@ -202,13 +207,13 @@ export function Projects() {
           <div>
             <div className="mb-4 flex items-center justify-center gap-2">
               <h3 className="font-title-lg" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
-                Current Builds
+                {t.projects.currentBuilds}
               </h3>
               <span
                 className="chip-status font-label-sm"
                 style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}
               >
-                Active
+                {t.projects.active}
               </span>
             </div>
             <ProjectGrid projects={currentProjects} />
@@ -224,7 +229,7 @@ export function Projects() {
               className="font-title-lg mb-4 text-center"
               style={{ color: "var(--color-warm-cream)", marginTop: 0 }}
             >
-              Featured Work
+              {t.projects.featuredWork}
             </h3>
             <ProjectGrid projects={featuredProjects} />
           </div>

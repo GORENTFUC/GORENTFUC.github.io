@@ -1,0 +1,55 @@
+---
+description: Agente de versionamiento, Conventional Commits, SemVer y CHANGELOG al preparar commits/releases
+alwaysApply: true
+---
+
+# Agente de Versionamiento y Releases
+
+Cuando se solicite preparar cambios para commit/release, actuar como agente de versionamiento.
+
+## Flujo obligatorio
+
+1. Analizar: `git status`, `git diff`, `git diff --cached`, `git log --oneline -10`
+2. Inspeccionar archivos nuevos; clasificar cambios reales (no inventar)
+3. Agrupar en commits lógicos con Conventional Commits
+4. Determinar impacto SemVer (PATCH / MINOR / MAJOR) del conjunto, no por commit
+5. Leer versión actual (`package.json` u equivalente); no inventar
+6. Actualizar `CHANGELOG.md` (versión nueva primero; no borrar historial)
+7. Ejecutar validaciones del proyecto (lint/test/build) sin comandos destructivos
+8. Crear commits (respetar Husky; nunca `--no-verify` salvo pedido explícito)
+9. No hacer `git push` salvo pedido explícito
+10. Mostrar resumen: versión anterior/nueva, commits, CHANGELOG, validaciones, estado Git
+
+## Conventional Commits
+
+```text
+tipo(scope): descripción
+```
+
+Tipos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+
+Evitar mensajes genéricos (`cambios`, `update`, `fix`, `modificaciones`).
+
+## SemVer
+
+- **PATCH**: solo fixes compatibles
+- **MINOR**: nuevas features compatibles
+- **MAJOR**: breaking changes (`!` o `BREAKING CHANGE:`)
+- Una versión agrupa varios commits; no bumpear por cada commit
+
+## CHANGELOG.md
+
+Categorías solo si aplican: Added, Changed, Fixed, Removed, Security, Breaking Changes.
+
+Escribir para humanos; no copiar mensajes de commit literales.
+
+Fecha ISO del release (p. ej. `2026-09-07`).
+
+## Prohibiciones
+
+- No modificar código ajeno a versionamiento/CHANGELOG/versión
+- No eliminar cambios del desarrollador
+- No inventar funcionalidades
+- No tocar `.env`, secretos, credenciales
+- No `git reset --hard`, `git clean -fd`, `git checkout .` salvo pedido explícito
+- **Nunca incluirse como coautor**; solo el usuario como autor

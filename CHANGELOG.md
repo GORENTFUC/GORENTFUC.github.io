@@ -2,6 +2,16 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.4.1] - 2026-09-08
+
+### Added
+
+- Se incorporó el favicon de marca JS y se muestra en el pie de página junto al alias.
+
+### Changed
+
+- Se actualizó el favicon público del sitio con la marca JS.
+
 ## [0.4.0] - 2026-09-08
 
 ### Added

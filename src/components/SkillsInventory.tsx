@@ -1,12 +1,4 @@
-import { skills, type Skill } from "@/data/portfolio"
-
-const categories: Skill["category"][] = ["Frontend", "Backend", "Tools"]
-
-const levelTone: Record<Skill["level"], string> = {
-  Novice: "var(--color-text-muted)",
-  Adept: "var(--color-architectural-ochre)",
-  Expert: "var(--color-muted-earth-olive)",
-}
+import { skills } from "@/data/portfolio"
 
 export function SkillsInventory() {
   return (
@@ -15,11 +7,11 @@ export function SkillsInventory() {
       aria-labelledby="skills-heading"
       style={{
         paddingBlock: "var(--space-3xl)",
-        paddingInline: "var(--margin-mobile)",
+        paddingInline: "clamp(1.25rem, 4vw, 3rem)",
       }}
     >
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
-        <header style={{ marginBottom: "var(--space-2xl)" }}>
+        <header className="text-center" style={{ marginBottom: "var(--space-2xl)" }}>
           <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
             Game Inventory
           </p>
@@ -28,76 +20,56 @@ export function SkillsInventory() {
             className="font-headline-lg"
             style={{ color: "var(--color-warm-cream)", margin: "0.5rem 0 0" }}
           >
-            Skills
+            Technical Inventory
           </h2>
-          <p className="font-body-md mt-3 max-w-2xl" style={{ color: "var(--color-text-secondary)" }}>
-            Stack organizado como inventario técnico: ranuras claras, rareza por nivel y categorías
-            separadas por marco estructural.
+          <p
+            className="font-body-md mx-auto"
+            style={{
+              color: "var(--color-text-secondary)",
+              marginTop: "var(--space-sm)",
+              maxWidth: "36rem",
+            }}
+          >
+            Stack organizado como inventario: ranuras claras, nivel por habilidad y rareza visible.
           </p>
         </header>
 
-        <div className="grid gap-4 lg:grid-cols-3">
-          {categories.map((category) => {
-            const items = skills.filter((skill) => skill.category === category)
-
-            return (
-              <section
-                key={category}
-                aria-labelledby={`skills-${category}`}
-                style={{
-                  backgroundColor: "var(--color-surface-container)",
-                  border: "var(--border-structural)",
-                  borderRadius: "var(--radius-default)",
-                  boxShadow: "var(--shadow-tactile-inset)",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  className="flex items-center justify-between"
-                  style={{
-                    borderBottom: "var(--border-structural)",
-                    padding: "var(--space-md)",
-                    backgroundColor: "var(--color-surface-container-low)",
-                  }}
+        <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((skill) => (
+            <article
+              key={skill.id}
+              style={{
+                backgroundColor: "var(--color-surface-container)",
+                border: "var(--border-structural)",
+                borderRadius: "var(--radius-xl)",
+                boxShadow: "var(--shadow-tactile-inset)",
+                padding: "var(--space-lg)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "var(--space-sm)",
+              }}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-title-md" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
+                  {skill.name}
+                </h3>
+                <span
+                  className="chip-featured font-label-sm"
+                  style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}
                 >
-                  <h3
-                    id={`skills-${category}`}
-                    className="font-title-md"
-                    style={{ color: "var(--color-warm-cream)", margin: 0 }}
-                  >
-                    {category}
-                  </h3>
-                  <span className="font-label-sm" style={{ color: "var(--color-text-muted)" }}>
-                    {items.length} slots
-                  </span>
-                </div>
+                  Lvl {String(skill.levelValue).padStart(2, "0")}
+                </span>
+              </div>
 
-                <ul className="grid grid-cols-2 gap-2" style={{ listStyle: "none", margin: 0, padding: "var(--space-md)" }}>
-                  {items.map((skill) => (
-                    <li
-                      key={skill.id}
-                      style={{
-                        backgroundColor: "var(--color-elevated-plate)",
-                        border: "var(--border-structural)",
-                        borderRadius: "var(--radius-default)",
-                        padding: "var(--space-sm)",
-                      }}
-                    >
-                      <p className="font-label-md" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
-                        {skill.name}
-                      </p>
-                      <p
-                        className="font-label-sm"
-                        style={{ color: levelTone[skill.level], margin: "4px 0 0" }}
-                      >
-                        {skill.level}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )
-          })}
+              <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
+                {skill.category} · {skill.level}
+              </p>
+
+              <p className="font-body-sm" style={{ color: "var(--color-text-secondary)", margin: 0 }}>
+                {skill.description}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

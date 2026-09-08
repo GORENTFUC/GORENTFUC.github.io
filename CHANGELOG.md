@@ -2,6 +2,24 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.3.0] - 2026-09-08
+
+### Added
+
+- Se añadieron estadísticas del hero y un heatmap de contribuciones en el panel de GitHub.
+- Se enriquecieron las skills con nivel numérico y descripción.
+- Se incorporaron tokens de color para la escala del heatmap y un alias corto en la navegación móvil.
+
+### Changed
+
+- Se actualizó la identidad de marca a `@JSGOR` (perfil, enlaces, título y meta descripción).
+- Se rediseñaron Contact, Skills, Hero, Navbar, Projects y Footer con radios más suaves y layout más compacto.
+- Se ajustó el ancho máximo de contenido y la escala de border-radius en los design tokens.
+
+### Removed
+
+- Se eliminó el proyecto destacado Scaffold CLI del listado y el marco lateral `shell-frame` del layout.
+
 ## [0.2.0] - 2026-09-08
 
 ### Added

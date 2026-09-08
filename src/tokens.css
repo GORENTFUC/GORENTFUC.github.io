@@ -159,12 +159,12 @@
   --font-label-sm-line-height: 14px;
   --font-label-sm-letter-spacing: 0.06em;
 
-  /* ── Border radius (Soft Architectural) ── */
-  --radius-sm: 0.125rem;
-  --radius-default: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
+  /* ── Border radius (Rounded Soft Architectural) ── */
+  --radius-sm: 0.375rem;
+  --radius-default: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
   --radius-full: 9999px;
 
   /* ── Spacing (8px baseline / 4px sub-grid) ── */
@@ -182,7 +182,14 @@
   --gutter-desktop: 1.5rem;
   --margin-mobile: 1.25rem;
   --margin-desktop: 3rem;
-  --max-content-width: 1280px;
+  --max-content-width: 1080px;
+
+  /* ── Contribution heatmap (ochre scale) ── */
+  --heat-0: #1c1c20;
+  --heat-1: #3a2a1c;
+  --heat-2: #6b4a2e;
+  --heat-3: #a87445;
+  --heat-4: #d4a373;
 
   /* ── Elevation & depth ── */
   --shadow-tactile-inset: inset 0 1px 0 0 rgba(250, 237, 205, 0.08),

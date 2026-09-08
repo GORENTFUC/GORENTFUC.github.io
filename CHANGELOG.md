@@ -2,6 +2,19 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.5.0] - 2026-09-08
+
+### Added
+
+- Se incorporó internacionalización ES/EN con español como idioma nativo por defecto.
+- Se añadió el interruptor de idioma en la barra de navegación superior.
+- Se persistió la preferencia de idioma en `localStorage`.
+
+### Changed
+
+- Se separó el contenido traducible del modelo de datos del portafolio.
+- Se conectaron las secciones de la UI al sistema de traducciones.
+
 ## [0.4.1] - 2026-09-08
 
 ### Added

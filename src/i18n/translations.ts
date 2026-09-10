@@ -116,14 +116,14 @@ const es: Dictionary = {
     closeMenu: "Cerrar menú",
     homeAria: "ir al inicio",
     links: [
-      { label: "01 Sobre mí", href: "#sobre-mi" },
-      { label: "02 Proyectos", href: "#proyectos" },
-      { label: "03 Inventario", href: "#skills" },
-      { label: "04 Contacto", href: "#contacto" },
+      { label: "Sobre mí", href: "#sobre-mi" },
+      { label: "Proyectos", href: "#proyectos" },
+      { label: "Inventario", href: "#skills" },
+      { label: "Contacto", href: "#contacto" },
     ],
   },
   profile: {
-    statusBadge: "Disponibilidad: Abierta",
+    statusBadge: "Disponible",
     summary:
       "Diseño e implemento interfaces táctiles y sistemas full stack con precisión arquitectónica. Código limpio, estructura rigurosa y detalles que se sienten machined.",
     heroEyebrow: "Especificación del sistema",
@@ -241,7 +241,7 @@ const es: Dictionary = {
     eyebrow: "Canal de señal",
     title: "Construyamos algo que perdure.",
     subtitle:
-      "Escribe sobre colaboraciones, oportunidades o proyectos. @JSGOR responde con precisión y sin ruido.",
+      "Escribe sobre colaboraciones, oportunidades o proyectos. @GORENTFUC responde con precisión y sin ruido.",
     channelsTitle: "Canales directos",
     channelsBody: "También puedes contactarme por estos canales.",
     channelsAria: "Redes sociales",
@@ -277,14 +277,14 @@ const en: Dictionary = {
     closeMenu: "Close menu",
     homeAria: "go to top",
     links: [
-      { label: "01 About", href: "#sobre-mi" },
-      { label: "02 Projects", href: "#proyectos" },
-      { label: "03 Inventory", href: "#skills" },
-      { label: "04 Contact", href: "#contacto" },
+      { label: "About", href: "#sobre-mi" },
+      { label: "Projects", href: "#proyectos" },
+      { label: "Inventory", href: "#skills" },
+      { label: "Contact", href: "#contacto" },
     ],
   },
   profile: {
-    statusBadge: "Availability: Open",
+    statusBadge: "Available",
     summary:
       "I design and build tactile interfaces and full-stack systems with architectural precision. Clean code, rigorous structure, and details that feel machined.",
     heroEyebrow: "System Specification & Overview",
@@ -402,7 +402,7 @@ const en: Dictionary = {
     eyebrow: "Signal Channel",
     title: "Let's construct something timeless.",
     subtitle:
-      "Write about collaborations, opportunities, or projects. @JSGOR replies with precision and no noise.",
+      "Write about collaborations, opportunities, or projects. @GORENTFUC replies with precision and no noise.",
     channelsTitle: "Direct channels",
     channelsBody: "You can also reach me through these channels.",
     channelsAria: "Social links",

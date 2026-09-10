@@ -24,11 +24,12 @@ export interface SocialLink {
 export const profile = {
   name: "Juan Sebastian Lizcano Quevedo",
   shortName: "J. Lizcano",
-  alias: "@JSGOR",
+  alias: "@GORENTFUC",
   role: "Software Engineer / Full Stack Developer",
   location: "Colombia",
   cvUrl: "/cv-juan-sebastian-lizcano.pdf",
-  githubUsername: "JSGOR",
+  githubUsername: "GORENTFUC",
+  githubUrl: "https://github.com/GORENTFUC",
 } as const
 
 export const currentProjects: Project[] = [
@@ -36,7 +37,7 @@ export const currentProjects: Project[] = [
     id: "current-portfolio",
     title: "mi-portafolio",
     tags: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    githubUrl: "https://github.com/JSGOR/mi-portafolio",
+    githubUrl: "https://github.com/GORENTFUC",
     liveUrl: "https://jsgor.dev",
     status: "active",
     progress: 72,
@@ -45,7 +46,7 @@ export const currentProjects: Project[] = [
     id: "current-api-hub",
     title: "Forge API Hub",
     tags: ["Node.js", "Express", "PostgreSQL", "Docker"],
-    githubUrl: "https://github.com/JSGOR/forge-api-hub",
+    githubUrl: "https://github.com/GORENTFUC",
     status: "active",
     progress: 58,
   },
@@ -56,7 +57,7 @@ export const featuredProjects: Project[] = [
     id: "featured-taskboard",
     title: "Blueprint Taskboard",
     tags: ["React", "Firebase", "Zustand"],
-    githubUrl: "https://github.com/JSGOR/blueprint-taskboard",
+    githubUrl: "https://github.com/GORENTFUC",
     liveUrl: "https://blueprint-taskboard.vercel.app",
     status: "featured",
   },
@@ -64,7 +65,7 @@ export const featuredProjects: Project[] = [
     id: "featured-inventory",
     title: "Inventory Ledger",
     tags: ["Next.js", "Prisma", "PostgreSQL"],
-    githubUrl: "https://github.com/JSGOR/inventory-ledger",
+    githubUrl: "https://github.com/GORENTFUC",
     liveUrl: "https://inventory-ledger.vercel.app",
     status: "featured",
   },
@@ -83,7 +84,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "social-github",
     label: "GitHub",
-    href: "https://github.com/JSGOR",
+    href: "https://github.com/GORENTFUC",
     platform: "github",
   },
   {
@@ -100,45 +101,4 @@ export const socialLinks: SocialLink[] = [
   },
 ]
 
-/** Deterministic contribution levels (0–4) for a 52×7 heatmap. */
-export function buildContributionHeatmap(weeks = 52): number[][] {
-  const columns: number[][] = []
-
-  for (let week = 0; week < weeks; week += 1) {
-    const days: number[] = []
-    for (let day = 0; day < 7; day += 1) {
-      const seed = (week * 17 + day * 31 + 11) % 100
-      if (seed < 28) days.push(0)
-      else if (seed < 48) days.push(1)
-      else if (seed < 68) days.push(2)
-      else if (seed < 86) days.push(3)
-      else days.push(4)
-    }
-    columns.push(days)
-  }
-
-  return columns
-}
-
-export const githubActivity = {
-  username: "JSGOR",
-  profileUrl: "https://github.com/JSGOR",
-  heatmap: buildContributionHeatmap(52),
-  featuredRepos: [
-    {
-      name: "mi-portafolio",
-      url: "https://github.com/JSGOR/mi-portafolio",
-      language: "TypeScript",
-    },
-    {
-      name: "forge-api-hub",
-      url: "https://github.com/JSGOR/forge-api-hub",
-      language: "JavaScript",
-    },
-    {
-      name: "scaffold-cli",
-      url: "https://github.com/JSGOR/scaffold-cli",
-      language: "TypeScript",
-    },
-  ],
-} as const
+export const footerSocialLinks = socialLinks.filter((link) => link.platform !== "email")

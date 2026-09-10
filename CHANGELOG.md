@@ -2,6 +2,25 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.6.0] - 2026-09-09
+
+### Added
+
+- Se incorporó un fondo ambient animado con motivos personales (juegos, anime, cálculo y diagramas).
+- Se añadió scroll suave con offset para la navegación por anclas.
+- Se agregaron iconos de plataformas y de estadísticas del hero.
+- Se configuró Vite y VS Code/Cursor para acceso por red y port forwarding (puerto 3001).
+
+### Changed
+
+- Se actualizó la identidad de marca a `@GORENTFUC` (perfil, enlaces, SEO y textos i18n).
+- Se refinaron Hero, Contact, Footer, Projects y Skills (iconografía y layout).
+- Se simplificaron las etiquetas de navegación y el badge de disponibilidad.
+
+### Removed
+
+- Se eliminó el panel de actividad de GitHub (heatmap y telemetría simulada).
+
 ## [0.5.0] - 2026-09-08
 
 ### Added

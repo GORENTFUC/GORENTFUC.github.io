@@ -1,0 +1,15 @@
+{
+  "remote.autoForwardPorts": true,
+  "remote.autoForwardPortsSource": "output",
+  "remote.portsAttributes": {
+    "3001": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "notify",
+      "elevateIfNeeded": true
+    },
+    "4173": {
+      "label": "Vite Preview",
+      "onAutoForward": "silent"
+    }
+  }
+}

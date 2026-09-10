@@ -1,4 +1,4 @@
-import { ArrowUpRight, FolderGit2 } from "lucide-react"
+import { ArrowUpRight, FolderGit2, LayoutGrid } from "lucide-react"
 import {
   currentProjects,
   featuredProjects,
@@ -191,7 +191,11 @@ export function Projects() {
     >
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
         <header className="mb-10 text-center" style={{ marginBottom: "var(--space-2xl)" }}>
-          <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
+          <p
+            className="font-label-sm inline-flex items-center justify-center gap-2"
+            style={{ color: "var(--color-architectural-ochre)", margin: 0 }}
+          >
+            <LayoutGrid size={14} aria-hidden="true" />
             {t.projects.eyebrow}
           </p>
           <h2

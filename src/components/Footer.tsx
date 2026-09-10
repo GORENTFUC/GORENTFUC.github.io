@@ -1,5 +1,6 @@
 import favicon from "@/assets/JS-Favicon.svg"
-import { profile, socialLinks } from "@/data/portfolio"
+import { footerSocialLinks, profile } from "@/data/portfolio"
+import { SocialPlatformIcon } from "@/components/icons"
 import { useLocale } from "@/i18n"
 
 export function Footer() {
@@ -8,6 +9,7 @@ export function Footer() {
 
   return (
     <footer
+      className="w-full"
       style={{
         borderTop: "var(--border-structural)",
         backgroundColor: "var(--color-surface-container-lowest)",
@@ -16,7 +18,7 @@ export function Footer() {
       }}
     >
       <div
-        className="mx-auto flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:justify-between md:text-left"
+        className="mx-auto flex w-full flex-col items-center gap-6 text-center md:flex-row md:items-start md:justify-between md:text-left"
         style={{ maxWidth: "var(--max-content-width)" }}
       >
         <div className="flex items-center gap-3">
@@ -66,16 +68,16 @@ export function Footer() {
 
         <nav aria-label={t.footer.socialAria}>
           <ul
-            className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
+            className="flex flex-wrap justify-center gap-3 md:justify-start"
             style={{ listStyle: "none", margin: 0, padding: 0 }}
           >
-            {socialLinks.map((link) => (
+            {footerSocialLinks.map((link) => (
               <li key={link.id}>
                 <a
                   href={link.href}
-                  target={link.platform === "email" ? undefined : "_blank"}
-                  rel={link.platform === "email" ? undefined : "noreferrer"}
-                  className="font-label-md"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 font-label-md"
                   style={{ color: "var(--color-text-muted)" }}
                   onMouseEnter={(event) => {
                     event.currentTarget.style.color = "var(--color-architectural-ochre)"
@@ -85,6 +87,7 @@ export function Footer() {
                   }}
                   aria-label={link.label}
                 >
+                  <SocialPlatformIcon platform={link.platform} size={16} />
                   {link.label}
                 </a>
               </li>

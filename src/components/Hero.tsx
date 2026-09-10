@@ -1,5 +1,6 @@
 import { ArrowRight, Mail } from "lucide-react"
 import { profile } from "@/data/portfolio"
+import { heroStatIcons } from "@/components/icons"
 import { useLocale } from "@/i18n"
 
 export function Hero() {
@@ -15,35 +16,9 @@ export function Hero() {
       }}
     >
       <div className="mx-auto text-center" style={{ maxWidth: "var(--max-content-width)" }}>
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
-          <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
-            {t.profile.heroEyebrow}
-          </p>
-          <span
-            className="chip-status inline-flex items-center gap-2"
-            style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}
-            role="status"
-            aria-label={t.profile.statusBadge}
-          >
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span
-                className="absolute inline-flex h-full w-full animate-ping opacity-60"
-                style={{
-                  borderRadius: "var(--radius-full)",
-                  backgroundColor: "var(--color-muted-earth-olive)",
-                }}
-              />
-              <span
-                className="relative inline-flex h-2 w-2"
-                style={{
-                  borderRadius: "var(--radius-full)",
-                  backgroundColor: "var(--color-muted-earth-olive)",
-                }}
-              />
-            </span>
-            <span className="font-label-sm">{t.profile.statusBadge}</span>
-          </span>
-        </div>
+        <p className="font-label-sm mb-6" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
+          {t.profile.heroEyebrow}
+        </p>
 
         <p
           className="font-label-md mb-3"
@@ -151,19 +126,28 @@ export function Hero() {
             paddingTop: "var(--space-lg)",
           }}
         >
-          {t.profile.heroStats.map((stat) => (
-            <div key={stat.label} className="text-center sm:text-left">
-              <dt className="font-label-sm" style={{ color: "var(--color-text-muted)", margin: 0 }}>
-                {stat.label}
-              </dt>
-              <dd
-                className="font-title-md"
-                style={{ color: "var(--color-warm-cream)", margin: "6px 0 0" }}
-              >
-                {stat.value}
-              </dd>
-            </div>
-          ))}
+          {t.profile.heroStats.map((stat, index) => {
+            const Icon = heroStatIcons[index]
+            return (
+              <div key={stat.label} className="text-center sm:text-left">
+                <dt
+                  className="font-label-sm inline-flex items-center justify-center gap-1.5 sm:justify-start"
+                  style={{ color: "var(--color-text-muted)", margin: 0 }}
+                >
+                  {Icon ? (
+                    <Icon size={14} aria-hidden="true" style={{ color: "var(--color-architectural-ochre)" }} />
+                  ) : null}
+                  {stat.label}
+                </dt>
+                <dd
+                  className="font-title-md"
+                  style={{ color: "var(--color-warm-cream)", margin: "6px 0 0" }}
+                >
+                  {stat.value}
+                </dd>
+              </div>
+            )
+          })}
         </dl>
       </div>
     </section>

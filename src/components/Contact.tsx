@@ -1,6 +1,7 @@
 import { useId, useState, type FormEvent } from "react"
-import { Send } from "lucide-react"
+import { MessageSquare, Send } from "lucide-react"
 import { socialLinks } from "@/data/portfolio"
+import { SocialPlatformIcon } from "@/components/icons"
 import { useLocale } from "@/i18n"
 
 type FormState = {
@@ -41,7 +42,11 @@ export function Contact() {
     >
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
         <header className="text-center" style={{ marginBottom: "var(--space-2xl)" }}>
-          <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
+          <p
+            className="font-label-sm inline-flex items-center justify-center gap-2"
+            style={{ color: "var(--color-architectural-ochre)", margin: 0 }}
+          >
+            <MessageSquare size={14} aria-hidden="true" />
             {t.contact.eyebrow}
           </p>
           <h2
@@ -95,7 +100,7 @@ export function Contact() {
                     href={link.href}
                     target={link.platform === "email" ? undefined : "_blank"}
                     rel={link.platform === "email" ? undefined : "noreferrer"}
-                    className="font-label-md inline-flex"
+                    className="font-label-md inline-flex items-center gap-2"
                     style={{ color: "var(--color-text-secondary)" }}
                     onMouseEnter={(event) => {
                       event.currentTarget.style.color = "var(--color-architectural-ochre-hover)"
@@ -105,6 +110,7 @@ export function Contact() {
                     }}
                     aria-label={t.contact.openLinkAria(link.label)}
                   >
+                    <SocialPlatformIcon platform={link.platform} size={16} />
                     {link.label}
                   </a>
                 </li>

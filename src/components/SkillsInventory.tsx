@@ -1,4 +1,6 @@
+import { Layers } from "lucide-react"
 import { skills } from "@/data/portfolio"
+import { skillIcons } from "@/components/icons"
 import { useLocale } from "@/i18n"
 
 export function SkillsInventory() {
@@ -15,7 +17,11 @@ export function SkillsInventory() {
     >
       <div className="mx-auto" style={{ maxWidth: "var(--max-content-width)" }}>
         <header className="text-center" style={{ marginBottom: "var(--space-2xl)" }}>
-          <p className="font-label-sm" style={{ color: "var(--color-architectural-ochre)", margin: 0 }}>
+          <p
+            className="font-label-sm inline-flex items-center justify-center gap-2"
+            style={{ color: "var(--color-architectural-ochre)", margin: 0 }}
+          >
+            <Layers size={14} aria-hidden="true" />
             {t.skills.eyebrow}
           </p>
           <h2
@@ -40,6 +46,7 @@ export function SkillsInventory() {
         <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((skill) => {
             const copy = t.skills.byId[skill.id]
+            const Icon = skillIcons[skill.id]
 
             return (
               <article
@@ -56,9 +63,27 @@ export function SkillsInventory() {
                 }}
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-title-md" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
-                    {skill.name}
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    {Icon ? (
+                      <span
+                        className="inline-flex items-center justify-center"
+                        style={{
+                          width: "2rem",
+                          height: "2rem",
+                          borderRadius: "var(--radius-md)",
+                          backgroundColor: "var(--chip-featured-bg)",
+                          border: "1px solid var(--chip-featured-border)",
+                          color: "var(--color-architectural-ochre)",
+                        }}
+                        aria-hidden="true"
+                      >
+                        <Icon size={16} />
+                      </span>
+                    ) : null}
+                    <h3 className="font-title-md" style={{ color: "var(--color-warm-cream)", margin: 0 }}>
+                      {skill.name}
+                    </h3>
+                  </div>
                   <span
                     className="chip-featured font-label-sm"
                     style={{ borderRadius: "var(--radius-full)", padding: "4px 10px" }}

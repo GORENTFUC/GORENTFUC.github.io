@@ -2,6 +2,24 @@
 
 Todas las modificaciones importantes de este proyecto deben documentarse en este archivo.
 
+## [0.7.0] - 2026-10-24
+
+### Added
+
+- Se configuró la ruta base `/Mi-Portafolio/` para publicar el sitio en GitHub Pages.
+
+### Changed
+
+- Se reemplazó el proyecto Forge API Hub por Web Arcoiris, aún en desarrollo y de acceso privado.
+- El contacto quedó solo con canales directos.
+- Los enlaces de GitHub y demo se muestran únicamente en proyectos activos que los tengan.
+
+### Removed
+
+- Se eliminó el formulario de contacto por correo.
+- Se quitaron los accesos rápidos del pie de página.
+- Se retiraron enlaces públicos de proyectos que aún no están publicados.
+
 ## [0.6.0] - 2026-09-09
 
 ### Added

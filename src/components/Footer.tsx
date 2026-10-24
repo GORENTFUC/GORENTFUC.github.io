@@ -41,31 +41,6 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label={t.footer.quickLinksAria}>
-          <ul
-            className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start"
-            style={{ listStyle: "none", margin: 0, padding: 0 }}
-          >
-            {t.nav.links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="font-label-md"
-                  style={{ color: "var(--color-text-muted)" }}
-                  onMouseEnter={(event) => {
-                    event.currentTarget.style.color = "var(--color-architectural-ochre)"
-                  }}
-                  onMouseLeave={(event) => {
-                    event.currentTarget.style.color = "var(--color-text-muted)"
-                  }}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         <nav aria-label={t.footer.socialAria}>
           <ul
             className="flex flex-wrap justify-center gap-3 md:justify-start"

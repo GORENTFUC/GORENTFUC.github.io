@@ -112,56 +112,60 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         ) : null}
 
-        <div className="flex flex-wrap gap-2">
+        <div className="mt-auto flex flex-wrap gap-2">
           {project.tags.map((tag, index) => (
             <TechChip key={tag} label={tag} featured={index === 0} />
           ))}
         </div>
 
-        <div
-          className="mt-auto flex flex-wrap gap-3"
-          style={{
-            borderTop: "var(--border-structural)",
-            paddingTop: "var(--space-md)",
-          }}
-        >
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 font-label-md transition-colors"
-            style={{ color: "var(--color-text-secondary)" }}
-            onMouseEnter={(event) => {
-              event.currentTarget.style.color = "var(--color-architectural-ochre-hover)"
+        {project.status === "active" && (project.githubUrl || project.liveUrl) ? (
+          <div
+            className="flex flex-wrap gap-3"
+            style={{
+              borderTop: "var(--border-structural)",
+              paddingTop: "var(--space-md)",
             }}
-            onMouseLeave={(event) => {
-              event.currentTarget.style.color = "var(--color-text-secondary)"
-            }}
-            aria-label={t.projects.githubAria(project.title)}
           >
-            <FolderGit2 size={15} aria-hidden="true" />
-            GitHub
-          </a>
-          {project.liveUrl ? (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-label-md transition-colors"
-              style={{ color: "var(--color-text-secondary)" }}
-              onMouseEnter={(event) => {
-                event.currentTarget.style.color = "var(--color-architectural-ochre-hover)"
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.color = "var(--color-text-secondary)"
-              }}
-              aria-label={t.projects.liveAria(project.title)}
-            >
-              <ArrowUpRight size={15} aria-hidden="true" />
-              {t.projects.liveDemo}
-            </a>
-          ) : null}
-        </div>
+            {project.githubUrl ? (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 font-label-md transition-colors"
+                style={{ color: "var(--color-text-secondary)" }}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.color = "var(--color-architectural-ochre-hover)"
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.color = "var(--color-text-secondary)"
+                }}
+                aria-label={t.projects.githubAria(project.title)}
+              >
+                <FolderGit2 size={15} aria-hidden="true" />
+                GitHub
+              </a>
+            ) : null}
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 font-label-md transition-colors"
+                style={{ color: "var(--color-text-secondary)" }}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.color = "var(--color-architectural-ochre-hover)"
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.color = "var(--color-text-secondary)"
+                }}
+                aria-label={t.projects.liveAria(project.title)}
+              >
+                <ArrowUpRight size={15} aria-hidden="true" />
+                {t.projects.liveDemo}
+              </a>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </article>
   )

@@ -2,7 +2,7 @@ export interface Project {
   id: string
   title: string
   tags: string[]
-  githubUrl: string
+  githubUrl?: string
   liveUrl?: string
   status: "active" | "featured"
   progress?: number
@@ -43,12 +43,10 @@ export const currentProjects: Project[] = [
     progress: 72,
   },
   {
-    id: "current-api-hub",
-    title: "Forge API Hub",
-    tags: ["Node.js", "Express", "PostgreSQL", "Docker"],
-    githubUrl: "https://github.com/GORENTFUC",
+    id: "current-web-arcoiris",
+    title: "Web Arcoiris",
+    tags: ["React", "TypeScript", "UI"],
     status: "active",
-    progress: 58,
   },
 ]
 
@@ -57,16 +55,12 @@ export const featuredProjects: Project[] = [
     id: "featured-taskboard",
     title: "Blueprint Taskboard",
     tags: ["React", "Firebase", "Zustand"],
-    githubUrl: "https://github.com/GORENTFUC",
-    liveUrl: "https://blueprint-taskboard.vercel.app",
     status: "featured",
   },
   {
     id: "featured-inventory",
     title: "Inventory Ledger",
     tags: ["Next.js", "Prisma", "PostgreSQL"],
-    githubUrl: "https://github.com/GORENTFUC",
-    liveUrl: "https://inventory-ledger.vercel.app",
     status: "featured",
   },
 ]

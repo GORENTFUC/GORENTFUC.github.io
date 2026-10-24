@@ -84,18 +84,10 @@ export type Dictionary = {
     channelsTitle: string
     channelsBody: string
     channelsAria: string
-    name: string
-    email: string
-    message: string
-    placeholder: string
-    submit: string
-    success: string
     openLinkAria: (label: string) => string
-    mailSubject: (name: string) => string
   }
   footer: {
     rights: (year: number, name: string) => string
-    quickLinksAria: string
     socialAria: string
   }
 }
@@ -153,9 +145,9 @@ const es: Dictionary = {
         description:
           "Portafolio personal con estética Tactile Architectural Minimalist. React, TypeScript y un sistema de tokens obsidian / ocre.",
       },
-      "current-api-hub": {
+      "current-web-arcoiris": {
         description:
-          "API gateway modular con autenticación JWT, rate limiting y paneles de telemetría para microservicios internos.",
+          "Sitio web de un jardín infantil. Sigue en desarrollo y el acceso permanece privado.",
       },
       "featured-taskboard": {
         description:
@@ -241,22 +233,14 @@ const es: Dictionary = {
     eyebrow: "Canal de señal",
     title: "Construyamos algo que perdure.",
     subtitle:
-      "Escribe sobre colaboraciones, oportunidades o proyectos. @GORENTFUC responde con precisión y sin ruido.",
+      "Para colaboraciones, oportunidades o proyectos, escríbeme por los canales directos.",
     channelsTitle: "Canales directos",
-    channelsBody: "También puedes contactarme por estos canales.",
+    channelsBody: "Puedes contactarme por estos canales.",
     channelsAria: "Redes sociales",
-    name: "Nombre",
-    email: "Correo",
-    message: "Mensaje",
-    placeholder: "Describe el contexto, alcance y timeline...",
-    submit: "Enviar mensaje",
-    success: "Abriendo tu cliente de correo…",
     openLinkAria: (label) => `Abrir ${label}`,
-    mailSubject: (name) => `Contacto portfolio — ${name}`,
   },
   footer: {
     rights: (year, name) => `© ${year} ${name}. Todos los derechos reservados.`,
-    quickLinksAria: "Accesos rápidos del pie",
     socialAria: "Redes sociales del pie",
   },
 }
@@ -314,9 +298,9 @@ const en: Dictionary = {
         description:
           "Personal portfolio with a Tactile Architectural Minimalist aesthetic. React, TypeScript, and an obsidian / ochre token system.",
       },
-      "current-api-hub": {
+      "current-web-arcoiris": {
         description:
-          "Modular API gateway with JWT auth, rate limiting, and telemetry panels for internal microservices.",
+          "Website for a kindergarten. Still in development, with access kept private.",
       },
       "featured-taskboard": {
         description:
@@ -402,22 +386,14 @@ const en: Dictionary = {
     eyebrow: "Signal Channel",
     title: "Let's construct something timeless.",
     subtitle:
-      "Write about collaborations, opportunities, or projects. @GORENTFUC replies with precision and no noise.",
+      "For collaborations, opportunities, or projects, reach me through the direct channels.",
     channelsTitle: "Direct channels",
-    channelsBody: "You can also reach me through these channels.",
+    channelsBody: "You can reach me through these channels.",
     channelsAria: "Social links",
-    name: "Name",
-    email: "Email",
-    message: "Message",
-    placeholder: "Describe context, scope, and timeline...",
-    submit: "Send Transmission",
-    success: "Opening your mail client…",
     openLinkAria: (label) => `Open ${label}`,
-    mailSubject: (name) => `Portfolio contact — ${name}`,
   },
   footer: {
     rights: (year, name) => `© ${year} ${name}. All rights reserved.`,
-    quickLinksAria: "Footer quick links",
     socialAria: "Footer social links",
   },
 }
